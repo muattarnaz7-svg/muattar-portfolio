@@ -1,9 +1,19 @@
 'use client';
 import React, { useRef, useEffect, useState } from 'react';
 
+interface Star {
+  id: number;
+  left: number;
+  top: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+}
+
 export default function About() {
-  const aboutRef = useRef(null);
-  const [stars, setStars] = useState([]);
+  const aboutRef = useRef<HTMLDivElement>(null);
+  const [stars, setStars] = useState<Star[]>([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -20,7 +30,7 @@ export default function About() {
 
   // Generate random stars
   useEffect(() => {
-    const generatedStars = [];
+    const generatedStars: Star[] = [];
     for (let i = 0; i < 60; i++) {
       generatedStars.push({
         id: i,
